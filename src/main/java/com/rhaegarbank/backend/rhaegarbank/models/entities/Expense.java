@@ -3,21 +3,31 @@ package com.rhaegarbank.backend.rhaegarbank.models.entities;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
+@Entity
 public class Expense {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
+    private String expenseDescription;
     private BigDecimal expenseAmount;
+
+    @Temporal(TemporalType.DATE)
     private LocalDateTime expenseDateTime;
     
     public Long getId() {
@@ -31,6 +41,12 @@ public class Expense {
     }
     public void setUser(User user) {
         this.user = user;
+    }
+    public String getExpenseDescription() {
+        return expenseDescription;
+    }
+    public void setExpenseDescription(String expenseDescription) {
+        this.expenseDescription = expenseDescription;
     }
     public BigDecimal getExpenseAmount() {
         return expenseAmount;

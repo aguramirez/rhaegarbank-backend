@@ -1,9 +1,16 @@
 package com.rhaegarbank.backend.rhaegarbank.models.entities;
 
+
+
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -11,10 +18,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String lastname;
+    private String email;
     private String username;
     private String password;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Income> incomes;
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Expense> expenses;
 
     public Long getId() {
         return id;
@@ -34,6 +49,12 @@ public class User {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
     public String getUsername() {
         return username;
     }
@@ -45,5 +66,17 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public List<Income> getIncomes() {
+        return incomes;
+    }
+    public void setIncomes(List<Income> incomes) {
+        this.incomes = incomes;
+    }
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses = expenses;
     }
 }
