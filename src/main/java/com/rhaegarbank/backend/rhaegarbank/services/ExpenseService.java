@@ -1,7 +1,6 @@
 package com.rhaegarbank.backend.rhaegarbank.services;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +12,7 @@ public interface ExpenseService {
 
     Optional<Expense> findById(Long id);
 
-    List<Expense> findByexpenseDate(LocalDateTime expenseDateTime);
+    List<Expense> findByexpenseDate(String expenseDateTime);
 
     List<Expense> findByexpenseDescription(String expenseDescription);
 

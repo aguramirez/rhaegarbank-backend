@@ -1,16 +1,17 @@
 package com.rhaegarbank.backend.rhaegarbank.services;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.rhaegarbank.backend.rhaegarbank.models.entities.Expense;
 import com.rhaegarbank.backend.rhaegarbank.repositories.ExpenseRepository;
 
+@Service
 public class ExpenseServiceImpl implements ExpenseService {
     
     @Autowired
@@ -36,7 +37,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Expense> findByexpenseDate(LocalDateTime expenseDateTime) {
+    public List<Expense> findByexpenseDate(String expenseDateTime) {
         return repo.findByExpenseDateTime(expenseDateTime);
     }
 

@@ -2,6 +2,7 @@ package com.rhaegarbank.backend.rhaegarbank.models.entities;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -11,8 +12,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -30,6 +33,11 @@ public class User {
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Expense> expenses;
+
+    public User(){
+        this.incomes = new ArrayList<>();
+        this.expenses = new ArrayList<>();
+    }
 
     public Long getId() {
         return id;

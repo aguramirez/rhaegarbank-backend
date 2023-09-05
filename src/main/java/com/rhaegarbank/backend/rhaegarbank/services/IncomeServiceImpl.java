@@ -1,7 +1,6 @@
 package com.rhaegarbank.backend.rhaegarbank.services;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +37,7 @@ public class IncomeServiceImpl implements IncomeService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Income> findByIncomeDate(LocalDateTime incomeDateTime) {
+    public List<Income> findByIncomeDate(String incomeDateTime) {
         return repo.findByIncomeDateTime(incomeDateTime);
     }
 

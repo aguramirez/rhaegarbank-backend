@@ -10,9 +10,9 @@ import com.rhaegarbank.backend.rhaegarbank.models.entities.User;
 
 public interface UserRepository extends CrudRepository <User, Long>{
     
-    @Query("SELECT i FROM Income i WHERE i.usuario.id = ?1")
+    @Query("SELECT i FROM Income i WHERE i.user.id = ?1")
     List<Income> findByUserIncomesId(Long id);
     
-    @Query("SELECT i FROM Expense i WHERE i.usuario.id = ?1")
+    @Query("SELECT e FROM Expense e WHERE e.user.id = ?1")
     List<Expense> findByUserExpensesId(Long id);
 }
