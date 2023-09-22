@@ -1,6 +1,7 @@
 package com.rhaegarbank.backend.rhaegarbank.models.entities;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,7 +24,7 @@ public class Expense {
 
     private String expenseDescription;
     private BigDecimal expenseAmount;
-    private String expenseDateTime;
+    private LocalDateTime expenseDateTime;
     
     public Long getId() {
         return id;
@@ -49,10 +50,10 @@ public class Expense {
     public void setExpenseAmount(BigDecimal expenseAmount) {
         this.expenseAmount = expenseAmount;
     }
-    public String getExpenseDateTime() {
+    public LocalDateTime getExpenseDateTime() {
         return expenseDateTime;
     }
-    public void setExpenseDateTime(String expenseDateTime) {
+    public void setExpenseDateTime(LocalDateTime expenseDateTime) {
         this.expenseDateTime = expenseDateTime;
     }
 

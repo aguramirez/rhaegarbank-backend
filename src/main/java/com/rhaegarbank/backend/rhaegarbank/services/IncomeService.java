@@ -21,4 +21,6 @@ public interface IncomeService {
     Optional<Income> update (Income income, Long id);
 
     void deleteById (Long id);
+
+    List<Income> findAll();
 }

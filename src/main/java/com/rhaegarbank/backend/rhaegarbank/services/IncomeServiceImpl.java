@@ -67,4 +67,9 @@ public class IncomeServiceImpl implements IncomeService {
         }
         return Optional.ofNullable(incomeOptional);
     }
+
+    @Override
+    public List<Income> findAll() {
+        return (List<Income>) repo.findAll();
+    }
 }
